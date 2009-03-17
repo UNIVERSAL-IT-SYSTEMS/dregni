@@ -21,3 +21,4 @@ class EventAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description', 'tags')
 
 admin.site.register(models.Event, EventAdmin)
+admin.site.register(models.EventType, list_display=('title', 'slug'))

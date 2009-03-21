@@ -5,7 +5,6 @@ from dregni import models
 class EventMetadataInline(admin.TabularInline):
     model = models.EventMetadata
 
-
 class EventAdmin(admin.ModelAdmin):
     inlines = [EventMetadataInline]
     prepopulated_fields = {'slug': ['title']}
@@ -21,4 +20,4 @@ class EventAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description', 'tags')
 
 admin.site.register(models.Event, EventAdmin)
-admin.site.register(models.EventType, list_display=('title', 'slug'))
+admin.site.register(models.EventMetadataType, list_display=('title', 'slug'))

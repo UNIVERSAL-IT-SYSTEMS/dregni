@@ -51,18 +51,17 @@ class Event(models.Model):
         return qs.order_by('-end_date', '-end_time',
                            '-start_date', '-start_time')[num]
 
-class EventType(models.Model):
+class EventMetadataType(models.Model):
     title = models.CharField(_('title'), max_length=255)
     slug = models.SlugField(_('slug'))
     description = models.TextField(_('description'))
-    
+
     def __unicode__(self):
         return self.title
 
 class EventMetadata(models.Model):
-    event = models.ForeignKey(Event, verbose_name=_('event'),
-                              related_name='metadata')
-    type = models.ForeignKey(EventType, verbose_name=_('event type'))
+    event = models.ForeignKey(Event, verbose_name=_('event'), related_name='metadata')
+    type = models.ForeignKey(EventMetadataType, verbose_name=_('event type'))
     text = models.CharField(_('text'), max_length=255)
     url = models.URLField(_('URL'), blank=True, verify_exists=False)
 

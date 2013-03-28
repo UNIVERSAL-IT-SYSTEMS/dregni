@@ -63,7 +63,7 @@ class EventMetadata(models.Model):
     event = models.ForeignKey(Event, verbose_name=_('event'), related_name='metadata')
     type = models.ForeignKey(EventMetadataType, verbose_name=_('event type'))
     text = models.CharField(_('text'), max_length=255)
-    url = models.URLField(_('URL'), blank=True, verify_exists=False)
+    url = models.URLField(_('URL'), blank=True)
 
     def __unicode__(self):
         return self.text
